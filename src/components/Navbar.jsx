@@ -10,33 +10,37 @@ export default function Navbar({ authed = false }) {
   };
 
   return (
-    <div className="navbar bg-base-100 shadow-sm border-b">
+    <div className="navbar bg-white shadow-sm border-b border-sky-100 px-4">
       <div className="flex-1">
-        <Link to="/" className="btn btn-ghost text-xl">
-          Study Management
+        <Link to="/" className="text-xl font-bold text-sky-700">
+          📘 Study Management
         </Link>
       </div>
       <div className="flex-none">
-        <ul className="menu menu-horizontal px-1 gap-1">
+        <ul className="menu menu-horizontal px-1 gap-2 items-center">
           {authed ? (
             <>
               <li>
-                <Link to="/dashboard">Dashboard</Link>
+                <Link to="/dashboard" className="nav-link">Dashboard</Link>
               </li>
               <li>
-                <button onClick={handleLogout}>Logout</button>
+                <button onClick={handleLogout} className="btn btn-sm btn-sky">
+                  Logout
+                </button>
               </li>
             </>
           ) : (
             <>
               <li>
-                <Link to="/">Home</Link>
+                <Link to="/" className="nav-link">Home</Link>
               </li>
               <li>
-                <Link to="/login">Login</Link>
+                <Link to="/login" className="nav-link">Login</Link>
               </li>
               <li>
-                <Link to="/register">Register</Link>
+                <Link to="/register" className="btn btn-sm btn-sky">
+                  Register
+                </Link>
               </li>
             </>
           )}
