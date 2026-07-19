@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabase.js";
 import Navbar from "../components/Navbar.jsx";
+import Footer from "../components/Footer.jsx";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -26,12 +27,12 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-base-200">
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="flex justify-center items-center py-16 px-4">
-        <div className="card w-full max-w-md bg-base-100 shadow-xl">
+      <div className="flex-1 flex justify-center items-center py-16 px-4">
+        <div className="card w-full max-w-md bg-white shadow-xl border border-sky-100">
           <form className="card-body" onSubmit={handleSubmit}>
-            <h2 className="card-title justify-center">Register</h2>
+            <h2 className="card-title justify-center text-sky-800">Register</h2>
             {error && <div className="alert alert-error text-sm">{error}</div>}
             <label className="form-control">
               <span className="label-text">Name</span>
@@ -64,18 +65,22 @@ export default function Register() {
                 minLength={6}
               />
             </label>
-            <button className="btn btn-primary mt-2" disabled={loading}>
+            <button className="btn btn-sky mt-2" disabled={loading}>
               {loading ? "Creating..." : "Register"}
             </button>
+            <Link to="/" className="btn btn-sky-outline">
+              ← Back to Home
+            </Link>
             <p className="text-sm text-center mt-2">
               Have an account?{" "}
-              <Link to="/login" className="link link-primary">
+              <Link to="/login" className="link text-sky-700">
                 Login
               </Link>
             </p>
           </form>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
